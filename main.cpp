@@ -6,14 +6,10 @@ using namespace std;
 bool checks(bool num, bool low, bool upp, bool spe, bool len, bool consec) {
 
 	// Make sure all values evaluate to true
-	if (num == low && low == upp && upp == spe && spe == len && len == consec && consec == true) {
-
+	if (num == low && low == upp && upp == spe && spe == len && len == consec && consec == true)
 		return true;
 
-	}
-
 	return false;
-
 }
 
 
@@ -46,60 +42,35 @@ int main() {
 			if (i > 1 && i < passLen - 1) {
 
 				// Consecutive check
-				while (n - 1 == pass[i - 1] && n + 1 == pass[i + 1]) {
-
+				while (n - 1 == pass[i - 1] && n + 1 == pass[i + 1])
 					n = rand() % 94;
 
-				}
-
 			}
 
-			if (pass[i] >= 'a' && pass[i] <= 'z') {
-
+			if (pass[i] >= 'a' && pass[i] <= 'z')
 				lowCheck = true;// Lowercase check
 
-			}
-
-			if (pass[i] >= 'A' && pass[i] <= 'Z') {
-
+			if (pass[i] >= 'A' && pass[i] <= 'Z')
 				uppCheck = true; // Uppercase check
 
-			}
-
-			if (pass[i] >= '0' && pass[i] <= '9') {
-
+			if (pass[i] >= '0' && pass[i] <= '9')
 				numCheck = true; // Number check
 
-			}
-
-			if (passLen >= 10) {
-
+			if (passLen >= 10)
 				lenCheck = true; // passLen check
 
-			}
-
 			if (pass[i] >= ' ' && pass[i] <= '/' || pass[i] >= ':' && pass[i] <= '@' || pass[i] >= '[' && pass[i] <= '`' || pass[i] >= '{' && pass[i] <= '~') {
-
 				speCheck = true; // Special Character check
-
-			}
 
 			pass[i] = randChar[n];
 
-			for (int n = 1; n < passLen - 1; n++) {
-
-				if (pass[n - 1] != pass[n] - 1 && pass[n + 1] != pass[n] + 1) {
-
+			for (int n = 1; n < passLen - 1; n++)
+				if (pass[n - 1] != pass[n] - 1 && pass[n + 1] != pass[n] + 1)
 					consecCheck = true;
-
-				}
-
-			}
 
 		}
 
 		if (!checks(numCheck, lowCheck, uppCheck, speCheck, lenCheck, consecCheck)) {
-
 			numCheck = false;
 			lowCheck = false;
 			uppCheck = false;
@@ -108,20 +79,13 @@ int main() {
 			consecCheck = false;
 
 			continue;
-
 		}
-
 	}
 
 	cout << "Generated Password: ";
 
-	for (int i = 0; i < passLen; i++) {
-
+	for (int i = 0; i < passLen; i++)
 		cout << pass[i];
-
-	}
-
-	system("pause >NUL");
 
 	return 0;
 }
